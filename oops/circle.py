@@ -5,3 +5,20 @@
 # make sure your radius cannot be set to a negative number.
 # You should raise a ValueError exception with the error message 
 # Radius cannot be negative (yes the tests check for the error message).
+
+
+class Circle:
+    def __init__(self,radius=1):
+        self.radius = radius
+    @property
+    def daimeter(self):
+        return self.radius * 2
+    @property
+    def area(self):
+        return 3.14 * self.radius * self.radius
+    
+
+obj_c = Circle(5)
+# print(obj_c.radius)
+print(obj_c.daimeter)
+print(obj_c.area)

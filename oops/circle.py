@@ -5,6 +5,7 @@
 # make sure your radius cannot be set to a negative number.
 # You should raise a ValueError exception with the error message 
 # Radius cannot be negative (yes the tests check for the error message).
+# things are  to do here
 
 
 class Circle:

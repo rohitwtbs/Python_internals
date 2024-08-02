@@ -21,3 +21,7 @@ for k in dic.keys():
 # for v in dic.values
 for v in dic.values():
     print(v)
+
+
+for index , (key,value)  in enumerate(dic.items()):
+    print(index , key , value)

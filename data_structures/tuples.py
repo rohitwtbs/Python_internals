@@ -14,3 +14,7 @@ for i in enumerate(zipped,start=65):
 
 for j in zipped:
     print(j)
+
+
+# deep tuple unpacking
+

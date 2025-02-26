@@ -44,3 +44,4 @@ obj_d.call()
 # python uses C3 linearization algorithm to evaluate the order
 # sample output (<class '__main__.D'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
 print(D.__mro__)
+#(<class '__main__.D'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)

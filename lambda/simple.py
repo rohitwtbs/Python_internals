@@ -11,3 +11,15 @@ ls =[2,3,4,5,6]
 
 z = lambda x:sum(x)
 print(z(ls))
+
+# lest check dictionary
+
+dic = {
+    "chennai": 25,
+    "bangalore": 15,
+    "delhi": 20
+}
+
+zz = lambda x:len(x)
+
+print(zz(dic))

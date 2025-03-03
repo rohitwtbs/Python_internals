@@ -23,3 +23,14 @@ dic = {
 zz = lambda x:len(x)
 
 print(zz(dic))
+
+import dis
+
+print(dis.dis(zz))
+# output
+        #   0 RESUME                   0
+        #       2 LOAD_GLOBAL              1 (NULL + len)
+        #      14 LOAD_FAST                0 (x)
+        #      16 PRECALL                  1
+        #      20 CALL                     1
+        #      30 RETURN_VALUE

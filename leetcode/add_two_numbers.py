@@ -10,6 +10,11 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         next = l1
@@ -33,16 +38,17 @@ class Solution:
                 val2 = 0
             if(next != None  or next2 != None):
                 quiotent,remainder = divmod(val + val2 + quiotent, 10)
+                print(quiotent,remainder)
             else:
                 pass   
             return_ll.val = remainder
-            # print(remainder)
+            print(remainder)
 
             if(next != None):
                 next = next.next
             if(next2 != None):
                 next2 = next2.next
-            if(next != None):
+            if(next != None or next2 != None):
                 n = ListNode()
                 return_ll.next = n
                 return_ll = n

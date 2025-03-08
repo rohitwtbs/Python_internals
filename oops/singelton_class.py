@@ -12,6 +12,8 @@ class Singelton():
         pass
     def __new__(cls,*args,**kwargs):
         print("new called")
+        print(type(cls))
+        #  why is the type of cls is <class 'type'>
         if cls._count is None:
             cls = super(Singelton,cls).__new__(cls,*args,**kwargs)
         return cls._count

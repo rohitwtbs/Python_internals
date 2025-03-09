@@ -3,6 +3,7 @@ def get_all_substrings(input_string):
     for i in range(len(input_string)):
         for j in range(i + 1, len(input_string) + 1):
             substrings.append(input_string[i:j])
+    substrings.sort(key=len, reverse=True)
     return substrings
 
 

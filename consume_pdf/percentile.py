@@ -32,19 +32,19 @@ import numpy as np
 
 import camelot
 
-pdf_path = "your_file.pdf"
+pdf_path = "result.pdf"
 tables = camelot.read_pdf(pdf_path, pages="all")
 
 # Convert first table into Pandas DataFrame
 df = tables[0].df
 
-# Rename columns if necessary
-df.columns = ["ID", "Name", "Score"]  # Example column names
+# # Rename columns if necessary
+# df.columns = ["ID", "Name", "Score"]  # Example column names
 
-# Convert to numeric where necessary
-df["Score"] = pd.to_numeric(df["Score"], errors="coerce")
+# # Convert to numeric where necessary
+# df["Score"] = pd.to_numeric(df["Score"], errors="coerce")
 
-# Compute percentile
-df["Score Percentile"] = df["Score"].rank(pct=True) * 100
+# # Compute percentile
+# df["Score Percentile"] = df["Score"].rank(pct=True) * 100
 
 print(df)

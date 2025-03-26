@@ -1,50 +1,25 @@
-import pdfplumber
 import pandas as pd
-import numpy as np
+import glob
 
-# Open the PDF file
-# pdf_path = "result.pdf"
+# Step 1: Get all CSV file names
+csv_files = glob.glob("page-*_table-*.csv")
 
-# tables = []
-# with pdfplumber.open(pdf_path) as pdf:
-#     for page in pdf.pages:
-#         table = page.extract_table()  # Extract table from page
-#         if table:
-#             tables.extend(table)  # Append extracted rows
-
-# # Convert to DataFrame
-# df = pd.DataFrame(tables)
-
-# print(df)
-
-# # Optionally, set the first row as column names if needed
-# df.columns = df.iloc[0]
-# df = df[1:].reset_index(drop=True)
-
-# # Convert numeric columns (assuming a column "Score")
-# df["Score"] = pd.to_numeric(df["Score"], errors="coerce")
-
-# # Calculate the percentile of "Score"
-# df["Score Percentile"] = df["Score"].rank(pct=True) * 100
-
-# print(df)
-
-
-import camelot
-
-pdf_path = "result.pdf"
-tables = camelot.read_pdf(pdf_path, pages="all")
-
-# Convert first table into Pandas DataFrame
-df = tables[0].df
-
-# # Rename columns if necessary
-# df.columns = ["ID", "Name", "Score"]  # Example column names
-
-# # Convert to numeric where necessary
-# df["Score"] = pd.to_numeric(df["Score"], errors="coerce")
-
-# # Compute percentile
-# df["Score Percentile"] = df["Score"].rank(pct=True) * 100
+# Step 2: Load all CSVs into a single DataFrame
+df_list = [pd.read_csv(file) for file in csv_files]
+df = pd.concat(df_list, ignore_index=True)
 
 print(df)
+
+# Step 3: Convert "Marks" column to numeric (replace with your actual column name)
+df["Marks"] = pd.to_numeric(df["Marks"], errors="coerce")
+
+# Step 4: Calculate percentile for the "Marks" column
+df["Marks Percentile"] = df["Marks"].rank(pct=True) * 100
+
+df = df.sort_values(by="Marks Percentile", ascending=False)
+
+# Step 5: Save the final DataFrame to a CSV file
+df.to_csv("final_accumulated_data.csv", index=False)
+
+# Display the first few rows
+print(df.head())

@@ -1,11 +1,12 @@
 import arcade
 import numpy as np
 from numba import cuda
+import time
 
 # Constants
-NUM_PARTICLES = 100
-SCREEN_WIDTH = 600
-SCREEN_HEIGHT = 600
+NUM_PARTICLES = 1000
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 1000
 
 # Allocate host arrays
 positions = np.random.rand(NUM_PARTICLES, 2).astype(np.float32) * SCREEN_WIDTH
@@ -33,19 +34,33 @@ def update_particles(positions, velocities, dt):
 class ParticleWindow(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "GPU Particles with Numba")
-        self.particles = arcade.ShapeElementList()
+        self.particles = arcade.SpriteList()
+        self.fps = 0
+        self.last_time = time.time()
 
     def on_update(self, delta_time):
         update_particles[1, NUM_PARTICLES](d_positions, d_velocities, delta_time)
         d_positions.copy_to_host(positions)
 
-        self.particles = arcade.ShapeElementList()
+        self.particles = arcade.SpriteList()
         for x, y in positions:
-            self.particles.append(arcade.create_ellipse_filled(x, y, 5, 5, arcade.color.AQUA))
+            particle = arcade.SpriteCircle(5, arcade.color.AQUA)
+            particle.center_x = x
+            particle.center_y = y
+            self.particles.append(particle)
+
+        # Calculate FPS
+        current_time = time.time()
+        self.fps = 1 / (current_time - self.last_time)
+        self.last_time = current_time
 
     def on_draw(self):
         self.clear()
         self.particles.draw()
+
+        # Display FPS
+        fps_text = f"FPS: {self.fps:.2f}"
+        arcade.draw_text(fps_text, 10, SCREEN_HEIGHT - 20, arcade.color.WHITE, 14)
 
 ParticleWindow()
 arcade.run()

@@ -1,9 +1,12 @@
 def log_execution(param):
     print("Decorator function called")
-    def inner_function():
+    print(param.__name__)
+    print(type(param))
+    def inner_function(a,b):
         print("Inner function called")
         print("Executing the function...")
-        param()
+        print(a,b)
+        param(a,b)
         print("Function executed successfully")
     return inner_function
     
@@ -15,7 +18,7 @@ def add(x,y):
     return x + y
 
 
-add(1,2)
+print(add(1,2))
 
 # Notes
 # when no return statement is present in the decorator function, it throws an error

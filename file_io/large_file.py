@@ -57,37 +57,37 @@ print("time taken ", time.time() - start_time)
 
 
 
-# import time
-# import multiprocessing
+import time
+import multiprocessing
 
-# def process_chunk_mp(chunk):
-#     """Simulates processing a chunk (replace with your actual logic)."""
-#     # Replace the print statement with your actual chunk processing.
-#     print(chunk)  # Or your actual chunk processing
+def process_chunk_mp(chunk):
+    """Simulates processing a chunk (replace with your actual logic)."""
+    # Replace the print statement with your actual chunk processing.
+    print(chunk)  # Or your actual chunk processing
 
-# def read_large_file_multiprocessing(file_path, chunk_size=200):
-#     """Reads a large file in chunks using multiprocessing."""
-#     try:
-#         with open(file_path, 'rb') as file:
-#             processes = []
-#             while True:
-#                 chunk = file.read(chunk_size)
-#                 if not chunk:
-#                     break
-#                 process = multiprocessing.Process(target=process_chunk_mp, args=(chunk,))
-#                 processes.append(process)
-#                 process.start()
+def read_large_file_multiprocessing(file_path, chunk_size=200):
+    """Reads a large file in chunks using multiprocessing."""
+    try:
+        with open(file_path, 'rb') as file:
+            processes = []
+            while True:
+                chunk = file.read(chunk_size)
+                if not chunk:
+                    break
+                process = multiprocessing.Process(target=process_chunk_mp, args=(chunk,))
+                processes.append(process)
+                process.start()
 
-#             for process in processes:
-#                 process.join()  # Wait for all processes to complete.
+            for process in processes:
+                process.join()  # Wait for all processes to complete.
 
-#     except FileNotFoundError:
-#         print("error: File not found")
-#     except IOError as e:
-#         print(f"error: {e}")
+    except FileNotFoundError:
+        print("error: File not found")
+    except IOError as e:
+        print(f"error: {e}")
 
-# if __name__ == "__main__":  # Important for multiprocessing on Windows
-#     file_path = r"C:\Users\rohit\Videos\Captures\eee.mp4"
-#     start_time = time.time()
-#     read_large_file_multiprocessing(file_path)
-#     print("time taken ", time.time() - start_time)
+if __name__ == "__main__":  # Important for multiprocessing on Windows
+    file_path = r"C:\Users\rohit\Videos\Captures\eee.mp4"
+    start_time = time.time()
+    read_large_file_multiprocessing(file_path)
+    print("time taken ", time.time() - start_time)

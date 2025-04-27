@@ -1,6 +1,12 @@
 def log_execution(param):
     print("Decorator function called")
-    pass
+    def inner_function():
+        print("Inner function called")
+        print("Executing the function...")
+        param()
+        print("Function executed successfully")
+    return inner_function
+    
 
 
 
@@ -17,3 +23,10 @@ add(1,2)
 #   File "/Users/rohitwtbs/Documents/github/Python_internals/decorator/func_decorator.py", line 12, in <module>
 #     add(1,2)
 # TypeError: 'NoneType' object is not callable
+
+
+# when you donot give any param to inner function, it throws an error
+# Traceback (most recent call last):
+#   File "/Users/rohitwtbs/Documents/github/Python_internals/decorator/func_decorator.py", line 12, in <module>
+#     add(1,2)
+# TypeError: inner_function() takes 0 positional arguments but 2 were given

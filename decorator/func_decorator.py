@@ -41,3 +41,6 @@ print(add(1,2))
 #   File "/Users/rohitwtbs/Documents/github/Python_internals/decorator/func_decorator.py", line 12, in <module>
 #     add(1,2)
 # TypeError: inner_function() takes 0 positional arguments but 2 were given
+
+
+#  so an inner fucntion has access to all the variables in the outer function

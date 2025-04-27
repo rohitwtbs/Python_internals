@@ -1,7 +1,13 @@
+import inspect
+
 def log_execution(param):
     print("Decorator function called")
     print(param.__name__)
+    print(param.__doc__)
     print(type(param))
+    sig = inspect.signature(param)
+    print("Function signature:", sig)
+    print("Parameters:", sig.parameters)
     def inner_function(a,b):
         print("Inner function called")
         print("Executing the function...")

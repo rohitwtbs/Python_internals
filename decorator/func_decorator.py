@@ -8,6 +8,8 @@ def log_execution(param):
     sig = inspect.signature(param)
     print("Function signature:", sig)
     print("Parameters:", sig.parameters)
+    source = inspect.getsource(param)
+    print("Source code:\n", source)
     def inner_function(a,b):
         print("Inner function called")
         print("Executing the function...")

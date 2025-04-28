@@ -14,8 +14,9 @@ def log_execution(param):
         print("Inner function called")
         print("Executing the function...")
         print(a,b)
-        param(a,b)
+        result = param(a,b)
         print("Function executed successfully")
+        return result
     return inner_function
     
 

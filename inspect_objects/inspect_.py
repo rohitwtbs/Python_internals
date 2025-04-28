@@ -19,3 +19,6 @@ def check_objects(obj):
 
 p = Prime()
 check_objects(p)
+
+# seems every obj will have a classname 
+#  so we can use that to get the source code

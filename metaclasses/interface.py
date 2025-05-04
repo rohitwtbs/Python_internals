@@ -22,3 +22,8 @@ class not_implement(interface):
 
 obj = implement()
 obj2 = not_implement()
+
+
+# when compiled without the second object no KeyErrorwill be raised
+# but when the second object is created it will raise a KeyError
+# because the method is not implemented

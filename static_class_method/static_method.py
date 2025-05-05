@@ -1,6 +1,7 @@
 
 class Car():
-    def __init_(self):
+    def __init__(self):
+        print("Car created")
         pass
     @staticmethod
     def start():

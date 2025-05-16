@@ -40,13 +40,13 @@ class GameWindow(arcade.Window):
     def setup(self):
         pass
 
-    def on_key_press(self):
+    def on_key_press(self, key, modifiers):
         pass
 
-    def on_key_release(self):
+    def on_key_release(self, key, modifiers):
         pass
 
-    def on_update(self):
+    def on_update(self, delta_time: float):
         pass
 
     def on_draw(self):

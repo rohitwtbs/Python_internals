@@ -1,3 +1,9 @@
+"""
+Example of Pymunk Physics Engine Platformer
+"""
+
+import math
+from typing import Optional
 import arcade
 
 SCREEN_TITLE = "PyMunk Platformer"
@@ -20,10 +26,17 @@ SCREEN_GRID_HEIGHT = 15
 SCREEN_WIDTH = SPRITE_SIZE * SCREEN_GRID_WIDTH
 SCREEN_HEIGHT = SPRITE_SIZE * SCREEN_GRID_HEIGHT
 
+
 class GameWindow(arcade.Window):
+    """Main Window"""
 
     def __init__(self, width, height, title):
+        """Create the variables"""
+
+        # Init the parent class
         super().__init__(width, height, title)
+
+        # Player sprite
         self.player_sprite: arcade.Sprite | None = None
 
         # Sprite lists we need
@@ -36,24 +49,32 @@ class GameWindow(arcade.Window):
         self.left_pressed: bool = False
         self.right_pressed: bool = False
 
+        # Set background color
+        self.background_color = arcade.color.AMAZON
 
     def setup(self):
+        """Set up everything with the game"""
         pass
 
     def on_key_press(self, key, modifiers):
+        """Called whenever a key is pressed."""
         pass
 
     def on_key_release(self, key, modifiers):
+        """Called when the user releases a key."""
         pass
 
-    def on_update(self, delta_time: float):
+    def on_update(self, delta_time):
+        """Movement and game logic"""
         pass
 
     def on_draw(self):
-        pass
+        """Draw everything"""
+        self.clear()
 
 
 def main():
+    """Main function"""
     window = GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
     window.setup()
     arcade.run()

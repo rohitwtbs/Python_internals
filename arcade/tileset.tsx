@@ -2,3 +2,9 @@
 <tileset version="1.8" tiledversion="1.10.2" name="tileset" tilewidth="64" tileheight="64" tilecount="1" columns="1">
  <image source="tile.png" width="64" height="64"/>
 </tileset>
+<tile id="0">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
+   <property name="type" value="tile"/>
+  </properties>
+ </tile>

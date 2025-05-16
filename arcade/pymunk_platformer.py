@@ -24,6 +24,18 @@ class GameWindow(arcade.Window):
 
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
+        self.player_sprite: arcade.Sprite | None = None
+
+        # Sprite lists we need
+        self.player_list: arcade.SpriteList | None = None
+        self.wall_list: arcade.SpriteList | None = None
+        self.bullet_list: arcade.SpriteList | None = None
+        self.item_list: arcade.SpriteList | None = None
+
+        # Track the current state of what key is pressed
+        self.left_pressed: bool = False
+        self.right_pressed: bool = False
+
 
     def setup(self):
         pass

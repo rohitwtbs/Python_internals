@@ -6,8 +6,8 @@ screen_height = 600
 
 class GameWindow(arcade.Window):
 
-    def __init__(self):
-        pass
+    def __init__(self, width, height, title):
+        super().__init__(width, height, title)
 
     def setup(self):
         pass

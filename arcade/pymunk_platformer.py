@@ -54,7 +54,33 @@ class GameWindow(arcade.Window):
 
     def setup(self):
         """Set up everything with the game"""
-        pass
+
+        # Create the sprite lists
+        self.player_list = arcade.SpriteList()
+        self.bullet_list = arcade.SpriteList()
+
+        # Map name
+        map_name = ":resources:/tiled_maps/pymunk_test_map.json"
+
+        # Load in TileMap
+        tile_map = arcade.load_tilemap(map_name, SPRITE_SCALING_TILES)
+
+        # Pull the sprite layers out of the tile map
+        self.wall_list = tile_map.sprite_lists["Platforms"]
+        self.item_list = tile_map.sprite_lists["Dynamic Items"]
+
+        # Create player sprite
+        self.player_sprite = arcade.Sprite(
+            ":resources:images/animated_characters/female_person/femalePerson_idle.png",
+            SPRITE_SCALING_PLAYER,
+        )
+        # Set player location
+        grid_x = 1
+        grid_y = 1
+        self.player_sprite.center_x = SPRITE_SIZE * grid_x + SPRITE_SIZE / 2
+        self.player_sprite.center_y = SPRITE_SIZE * grid_y + SPRITE_SIZE / 2
+        # Add to player sprite list
+        self.player_list.append(self.player_sprite)
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
@@ -71,6 +97,10 @@ class GameWindow(arcade.Window):
     def on_draw(self):
         """Draw everything"""
         self.clear()
+        self.wall_list.draw()
+        self.bullet_list.draw()
+        self.item_list.draw()
+        self.player_list.draw()
 
 
 def main():

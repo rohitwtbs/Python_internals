@@ -1,7 +1,8 @@
 import asyncio
 
 async def main():
-    await print_hello()
+    print_hello()
+    print("after asyn call")
     pass
 
 async def print_hello():
@@ -10,3 +11,10 @@ async def print_hello():
 
 
 asyncio.run(main())
+
+
+# Qyestions , why this warning
+#  RuntimeWarning: coroutine 'print_hello' was never awaited
+#   print_hello()
+# RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+# after asyn call

@@ -241,8 +241,9 @@ app.clientside_callback(
 
         for (let r=0; r<ROWS; r++) {
             for (let c=0; c<COLS; c++) {
-                const id = JSON.stringify({type:'cell',row:r,col:c});
-                const el = document.querySelector('[id="'+id+'"]');
+                // Dash sorts keys alphabetically in DOM IDs
+                const id = '{"col":'+c+',"row":'+r+',"type":"cell"}';
+                const el = document.getElementById(id);
                 if (!el) continue;
                 // clear old orbs
                 el.innerHTML = '';
